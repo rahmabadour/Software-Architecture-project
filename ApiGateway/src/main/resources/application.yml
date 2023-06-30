@@ -1,0 +1,21 @@
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: post-service
+          uri: lb://post-service
+          predicates:
+            - Path=/api/posts/**
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka
+
+app:
+  eureka-server: localhost
+
+server:
+  port: 8022
